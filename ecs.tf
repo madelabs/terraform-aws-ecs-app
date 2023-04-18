@@ -32,9 +32,8 @@ resource "aws_ecs_service" "service" {
   }
 }
 
-
 data "template_file" "container_definition" {
-  template = file("${path.module}/app.tpl")
+  template = file("${path.module}/templates/app.tpl")
 
   vars = {
     container_image = "${var.container_image_uri}"
