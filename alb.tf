@@ -1,12 +1,13 @@
 resource "aws_alb" "alb" {
   name            = "${var.project_name}-alb"
+  internal        = var.alb_internal
   subnets         = var.public_subnets
   security_groups = [aws_security_group.alb_secg.id]
 }
 
 resource "aws_alb_target_group" "target_group" {
   name        = "${var.project_name}-target-group"
-  port        = 80
+  port        = var.target_group_port
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "ip"

@@ -32,7 +32,6 @@ resource "aws_ecs_service" "service" {
   }
 }
 
-
 data "template_file" "container_definition" {
   template = file("${path.module}/templates/app.tpl")
 

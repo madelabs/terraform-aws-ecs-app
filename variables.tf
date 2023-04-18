@@ -58,3 +58,15 @@ variable "public_subnets" {
   type        = set(string)
   description = "Public subnets in which to run the ALB."
 }
+
+variable "alb_internal" {
+  type        = bool
+  description = "Whether or not the loab balancer is internal."
+  default     = false
+}
+
+variable "target_group_port" {
+  type        = number
+  description = "Port on which targets receive traffic, unless overridden when registering a specific target."
+  default     = 80
+}
