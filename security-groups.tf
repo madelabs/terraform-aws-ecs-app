@@ -13,7 +13,7 @@ resource "aws_security_group" "lb" {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
-    cidr_blocks = ["10.0.100.0/24", "10.0.200.0/24"]
+    cidr_blocks = ["10.0.100.0/24", "10.0.200.0/24"] # this needs to be converted to a variable with the value coming from the output of the VPC module.
   }
 }
 
@@ -45,7 +45,7 @@ resource "aws_security_group" "vpc_endpoint" {
     protocol    = "tcp"
     from_port   = 443
     to_port     = 443
-    cidr_blocks = ["10.0.100.0/24", "10.0.200.0/24"]
+    cidr_blocks = ["10.0.100.0/24", "10.0.200.0/24"] # this needs to be converted to a variable with the value coming from the output of the VPC module.
   }
 
   egress {
