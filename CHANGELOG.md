@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Fixed reference to renamed security group.
+- Remove unnecessary log stream. (each container will make their own)
+- Adjust ALB variables
+- Adjust ECS variables
+- Add IAM actions variable
 
 ## [0.0.1] - 2023-04-18
 
