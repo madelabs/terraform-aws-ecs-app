@@ -33,5 +33,3 @@ resource "aws_alb_listener" "listener" {
     type             = var.alb_listener_action_type
   }
 }
-
-provider "aws" {}
