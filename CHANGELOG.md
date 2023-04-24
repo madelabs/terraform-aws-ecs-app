@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.2] - 2023-04-24
+
+### Fixed
+
+- Fixed reference to renamed security group.
+
 ## [0.0.1] - 2023-04-18
 
 ### Added

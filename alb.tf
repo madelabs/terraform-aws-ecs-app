@@ -2,7 +2,7 @@ resource "aws_alb" "alb" {
   name            = "${var.project_name}-alb"
   internal        = var.alb_internal
   subnets         = var.public_subnets
-  security_groups = [aws_security_group.alb_secg.id]
+  security_groups = [aws_security_group.alb.id]
 }
 
 resource "aws_alb_target_group" "target_group" {
