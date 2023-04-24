@@ -1,68 +1,68 @@
-# resource "aws_ecs_cluster" "cluster" {
-#   name = "${var.project_name}-cluster"
-# }
+resource "aws_ecs_cluster" "cluster" {
+  name = "${var.project_name}-cluster"
+}
 
-# resource "aws_ecs_service" "service" {
-#   name                              = "${var.project_name}-${var.environment}-service"
-#   cluster                           = aws_ecs_cluster.cluster.id
-#   task_definition                   = aws_ecs_task_definition.task.arn
-#   health_check_grace_period_seconds = var.ecs_svc_health_check_grace_period_seconds
-#   desired_count                     = var.ecs_svc_container_desired_count
-#   launch_type                       = var.ecs_svc_launch_type
+resource "aws_ecs_service" "service" {
+  name                              = "${var.project_name}-${var.environment}-service"
+  cluster                           = aws_ecs_cluster.cluster.id
+  task_definition                   = aws_ecs_task_definition.task.arn
+  health_check_grace_period_seconds = var.ecs_svc_health_check_grace_period_seconds
+  desired_count                     = var.ecs_svc_container_desired_count
+  launch_type                       = var.ecs_svc_launch_type
 
-#   network_configuration {
-#     assign_public_ip = var.public_ip
-#     security_groups  = [aws_security_group.ecs_tasks.id]
-#     subnets          = var.ecs_svc_subnets
-#   }
+  network_configuration {
+    assign_public_ip = var.public_ip
+    security_groups  = [aws_security_group.ecs_tasks.id]
+    subnets          = var.ecs_svc_subnets
+  }
 
-#   load_balancer {
-#     target_group_arn = aws_alb_target_group.target_group.arn
-#     container_name   = var.project_name
-#     container_port   = var.host_port
-#   }
-# }
+  load_balancer {
+    target_group_arn = aws_alb_target_group.target_group.arn
+    container_name   = var.project_name
+    container_port   = var.host_port
+  }
+}
 
-# resource "aws_ecs_task_definition" "task" {
-#   family                   = "${var.project_name}-${var.environment}-task"
-#   cpu                      = var.ecs_task_cpu
-#   memory                   = var.ecs_task_memory
-#   execution_role_arn       = aws_iam_role.execution_role.arn
-#   task_role_arn            = aws_iam_role.task_role.arn
-#   requires_compatibilities = [var.ecs_svc_launch_type]
-#   network_mode             = var.ecs_task_network_mode
+resource "aws_ecs_task_definition" "task" {
+  family                   = "${var.project_name}-${var.environment}-task"
+  cpu                      = var.ecs_task_cpu
+  memory                   = var.ecs_task_memory
+  execution_role_arn       = aws_iam_role.execution_role.arn
+  task_role_arn            = aws_iam_role.task_role.arn
+  requires_compatibilities = [var.ecs_svc_launch_type]
+  network_mode             = var.ecs_task_network_mode
 
 
-#   container_definitions = jsonencode([
-#     {
-#       name      = var.project_name
-#       image     = var.container_image_uri
-#       essential = var.container_essential
+  container_definitions = jsonencode([
+    {
+      name      = var.project_name
+      image     = var.container_image_uri
+      essential = var.container_essential
 
-#       logConfiguration = {
-#         logDriver = "awslogs"
-#         options = {
-#           "awslogs-group"         = aws_cloudwatch_log_group.log_group.name
-#           "awslogs-region"        = var.aws_region
-#           "awslogs-stream-prefix" = var.log_stream_prefix
-#         }
-#       }
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = aws_cloudwatch_log_group.log_group.name
+          "awslogs-region"        = var.aws_region
+          "awslogs-stream-prefix" = var.log_stream_prefix
+        }
+      }
 
-#       portMappings = [
-#         {
-#           "containerPort" = var.container_port
-#           "protocol"      = var.container_task_definition_protocol
-#           "hostPort"      = var.host_port
-#         }
-#       ],
+      portMappings = [
+        {
+          "containerPort" = var.container_port
+          "protocol"      = var.container_task_definition_protocol
+          "hostPort"      = var.host_port
+        }
+      ],
 
-#       # healthCheck = {
-#       #   "retries"     = var.container_health_check_retries
-#       #   "command"     = var.container_health_check_command
-#       #   "timeout"     = var.container_health_check_timeout
-#       #   "interval"    = var.container_health_check_interval
-#       #   "startPeriod" = var.container_health_check_start_period
-#       # }
-#     }
-#   ])
-# }
+      # healthCheck = {
+      #   "retries"     = var.container_health_check_retries
+      #   "command"     = var.container_health_check_command
+      #   "timeout"     = var.container_health_check_timeout
+      #   "interval"    = var.container_health_check_interval
+      #   "startPeriod" = var.container_health_check_start_period
+      # }
+    }
+  ])
+}
