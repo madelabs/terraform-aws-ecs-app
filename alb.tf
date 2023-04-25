@@ -26,7 +26,9 @@ resource "aws_alb_target_group" "target_group" {
 resource "aws_alb_listener" "listener" {
   load_balancer_arn = aws_alb.alb.arn
   port              = var.alb_ingress_port
-  protocol          = var.host_protocol
+  protocol          = "HTTPS"
+  ssl_policy        = var.alb_listener_ssl_policy
+  certificate_arn   = var.alb_listener_certificate_arn
 
   default_action {
     target_group_arn = aws_alb_target_group.target_group.arn

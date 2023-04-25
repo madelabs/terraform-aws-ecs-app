@@ -32,7 +32,7 @@ variable "health_check_path" {
 variable "public_ip" {
   type        = bool
   description = "whether or not to assign a public IP"
-  default     = false 
+  default     = false
 }
 
 variable "vpc_id" {
@@ -175,6 +175,7 @@ variable "alb_subnets" {
 variable "alb_ingress_port" {
   type        = number
   description = "Port for which the ALB listens on to accept traffic and route to the target group."
+  default     = 443
 }
 
 variable "alb_target_group_target_type" {
@@ -187,6 +188,17 @@ variable "alb_listener_action_type" {
   type        = string
   description = "Type of routing action. Valid values are [forward, redirect, fixed-response, authenticate-cognito and authenticate-oidc]"
   default     = "forward"
+}
+
+variable "alb_listener_ssl_policy" {
+  type        = string
+  description = "Name of the SSL Policy for the listener."
+  default     = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+}
+
+variable "alb_listener_certificate_arn" {
+  type        = string
+  description = "ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS."
 }
 
 variable "alb_target_group_health_check_healthy_threshold" {
