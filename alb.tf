@@ -25,7 +25,7 @@ resource "aws_alb_target_group" "target_group" {
 
 resource "aws_alb_listener" "listener" {
   load_balancer_arn = aws_alb.alb.arn
-  port              = var.host_port
+  port              = var.alb_ingress_port
   protocol          = var.host_protocol
 
   default_action {
