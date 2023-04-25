@@ -28,7 +28,7 @@ resource "aws_alb_listener" "listener" {
   port              = var.alb_ingress_port
   protocol          = "HTTPS"
   ssl_policy        = var.alb_listener_ssl_policy
-  certificate_arn   = alb_listener_certificate_arn
+  certificate_arn   = var.alb_listener_certificate_arn
 
   default_action {
     target_group_arn = aws_alb_target_group.target_group.arn
