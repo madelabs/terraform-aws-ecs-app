@@ -113,7 +113,6 @@ variable "container_health_check_retries" {
 variable "container_health_check_command" {
   type        = set(string)
   description = "A string array representing the command that the container runs to determine if it's healthy. The string array can start with CMD to run the command arguments directly, or CMD-SHELL to run the command with the container's default shell. If neither is specified, CMD is used. An exit code of 0, with no stderr output, indicates success, and a non-zero exit code indicates failure."
-  default     = ["CMD-SHELL", "curl -f http://localhost/|| exit 1"]
 }
 
 variable "container_health_check_timeout" {

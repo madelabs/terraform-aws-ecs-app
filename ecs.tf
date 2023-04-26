@@ -56,13 +56,13 @@ resource "aws_ecs_task_definition" "task" {
         }
       ],
 
-      # healthCheck = {
-      #   "retries"     = var.container_health_check_retries
-      #   "command"     = var.container_health_check_command
-      #   "timeout"     = var.container_health_check_timeout
-      #   "interval"    = var.container_health_check_interval
-      #   "startPeriod" = var.container_health_check_start_period
-      # }
+      healthCheck = {
+        "retries"     = var.container_health_check_retries
+        "command"     = var.container_health_check_command
+        "timeout"     = var.container_health_check_timeout
+        "interval"    = var.container_health_check_interval
+        "startPeriod" = var.container_health_check_start_period
+      }
     }
   ])
 }
