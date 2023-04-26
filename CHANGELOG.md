@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+- Add capacity provider support to support spot instances for cost savings
+
+## [0.0.2] - 2023-04-24
+
+### Fixed
+
+- Fixed reference to renamed security group.
+- Remove unnecessary log stream. (each container will make their own)
+- Adjust ALB variables
+- Adjust ECS variables
+- Add IAM actions variable
+- Forced HTTPS on the ALB and added ACM certificate
+
 ## [0.0.1] - 2023-04-18
 
 ### Added
