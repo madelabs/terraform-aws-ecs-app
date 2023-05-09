@@ -1,0 +1,82 @@
+@startuml terraform-aws-ecs-app
+
+' !define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v15.0/dist
+' !include AWSPuml/AWSSimplified.puml
+' !include AWSPuml/AWSCommon.puml
+' !include AWSPuml/DeveloperTools/all.puml
+
+
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v15.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Groups/AWSCloud.puml
+!include AWSPuml/Groups/VPC.puml
+!include AWSPuml/Groups/AvailabilityZone.puml
+!include AWSPuml/Groups/PublicSubnet.puml
+!include AWSPuml/Groups/PrivateSubnet.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/NetworkingContentDelivery/VPCInternetGateway.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+
+' hide stereotype
+' skinparam linetype ortho
+
+AWSCloudGroup(cloud)  {
+  VPCGroup(vpc, "VPC")  {
+
+    Fargate(fargate_cluster, "Fargate", "") #LightGreen
+    CloudWatchLogs(log_group, "CloudWatch", "") #LightGreen
+    IdentityandAccessManagement(iam_resources, "IAM Roles and Policies", "") #LightGreen
+
+    rectangle target_group as "Target Group" #LightGreen
+    rectangle security_group_alb as "ALB Security Group" #LightGreen
+    rectangle security_group_tasks as "ECS Task Security Group" #LightGreen
+    rectangle listener as "ALB Listener" #LightGreen
+    rectangle task_definition as "Task Definition" #LightGreen
+
+    AvailabilityZoneGroup(az_1, "\tAvailability Zone 1\t")  {
+      GenericGroup(subnet_a, "\tSubnet A\t")  {
+        ElasticLoadBalancingApplicationLoadBalancer(alb1, "Application Load Balancer", "") #LightGreen
+      }
+      GenericGroup(subnet_b, "\tSubnet B\t")  {
+        ElasticContainerServiceService(ecs_service1, "ECS Service", "") #LightGreen
+        ElasticContainerServiceTask(ecs_task1, "ECS Task", "") #LightGreen
+      }
+    }
+
+    AvailabilityZoneGroup(az_2, "\tAvailability Zone 2\t")  {
+      GenericGroup(subnet_c, "\tSubnet C\t")  {
+        ElasticLoadBalancingApplicationLoadBalancer(alb2, "Application Load Balancer", "") #LightGreen
+      }
+      GenericGroup(subnet_d, "\tSubnet D\t")  {
+        ElasticContainerServiceService(ecs_service2, "ECS Service", "") #LightGreen
+        ElasticContainerServiceTask(ecs_task2, "ECS Task", "") #LightGreen
+      }
+    }
+
+    alb1 --> target_group
+    alb1 -[dashed]- listener
+    alb2 --> target_group
+    alb2 -[dashed]- listener
+    target_group --> ecs_service1
+    ecs_service1 --> ecs_task1
+    target_group --> ecs_service2
+    ecs_service2 --> ecs_task2
+
+
+  }
+}
+
+@enduml
+
+
+' ElasticContainerServiceService
+' ElasticContainerServiceTask
+' Fargate
