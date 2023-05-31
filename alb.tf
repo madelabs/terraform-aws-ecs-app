@@ -6,7 +6,7 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_alb_target_group" "target_group" {
-  name        = "${var.project_name}-${var.environment}-target-group"
+  name        = "${var.project_name}-${var.environment}"
   port        = var.host_port
   protocol    = var.host_protocol
   vpc_id      = var.vpc_id
