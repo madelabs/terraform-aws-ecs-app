@@ -21,6 +21,15 @@ resource "aws_alb_target_group" "target_group" {
     path                = var.health_check_path
     unhealthy_threshold = var.alb_target_group_health_check_unhealthy_threshold
   }
+
+  dynamic "stickiness" {
+    for_each = var.alb_stickiness_enabled[*]
+
+    content {
+      type    = "lb_cookie"
+      enabled = var.alb_stickiness_enabled
+    }
+  }
 }
 
 resource "aws_alb_listener" "listener" {

@@ -229,3 +229,9 @@ variable "alb_target_group_health_check_unhealthy_threshold" {
   description = "Number of consecutive health check failures required before considering a target unhealthy. The range is 2-10. Defaults to 3."
   default     = 3
 }
+
+variable "alb_stickiness_enabled" {
+  type        = bool
+  description = "Whether or not stickiness is enabled on the ALB."
+  default     = true
+}

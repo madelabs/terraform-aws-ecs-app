@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Add ability to turn on stickiness on the load balancer target group.
 - ALB target group naming shortened to decrease chance of hitting character limit.
 
 ## [0.0.2] - 2023-04-24
