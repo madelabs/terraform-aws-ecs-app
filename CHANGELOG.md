@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 - Add capacity provider support to support spot instances for cost savings
 
+## [0.0.3] - DATE TBD
+
+### Changed
+
+- ALB target group naming shortened to decrease chance of hitting character limit.
+
 ## [0.0.2] - 2023-04-24
 
 ### Fixed
