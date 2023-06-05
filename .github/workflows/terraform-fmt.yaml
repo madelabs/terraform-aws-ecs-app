@@ -2,7 +2,7 @@ name: terraform-fmt
 run-name: terraform-fmt check ${{ github.event.pull_request.title }}
 on:
   pull_request:
-    types: [ edited, assigned, opened, reopened, synchronize, ready_for_review ]
+    types: [opened, reopened, synchronize]
 
 jobs:
   terraform-formatting-check:
