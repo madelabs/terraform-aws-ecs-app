@@ -31,16 +31,20 @@ variable "health_check_path" {
 
 variable "public_ip" {
   type        = bool
-  description = "whether or not to assign a public IP"
+  description = "Whether or not to assign a public IP address."
   default     = false
 }
 
-variable "vpc_id" {
+### ECS ###
+variable "ecs_cluster_arn" {
   type        = string
-  description = "The ID of the VPC to create resources in."
+  description = "ARN of the ECS cluster to create resources in."
 }
 
-### ECS ###
+variable "ecs_vpc_id" {
+  type        = string
+  description = "The ID of the VPC to create ECS resources in."
+}
 
 variable "ecs_svc_subnets" {
   type        = set(string)
@@ -53,6 +57,12 @@ variable "ecs_svc_launch_type" {
   default     = "FARGATE"
 }
 
+variable "ecs_svc_fargate_platform_version" {
+  type        = string
+  description = "Platform version on which to run your service. Only applicable for launch_type set to FARGATE."
+  default     = "LATEST"
+}
+
 variable "ecs_svc_container_desired_count" {
   type        = number
   description = "Number of docker containers to run"
@@ -63,6 +73,12 @@ variable "ecs_svc_health_check_grace_period_seconds" {
   type        = number
   description = "Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers."
   default     = 30
+}
+
+variable "ecs_svc_enable_ssm" {
+  type        = bool
+  description = "Enable SSM and Docker Exec capabilities to the ECS task. Setting this to true from false on an existing running service requires a new deployment."
+  default     = false
 }
 
 variable "ecs_task_cpu" {
@@ -134,6 +150,12 @@ variable "container_health_check_start_period" {
 }
 
 ### IAM ###
+variable "permissions_boundary" {
+  type        = string
+  description = "ARN of the policy that is used to set the permissions boundary for the role."
+  default     = ""
+}
+
 variable "task_policy_actions" {
   type        = set(string)
   description = "List of services and their permissions to apply to the policy."
@@ -166,9 +188,21 @@ variable "alb_internal" {
   default     = false
 }
 
+variable "alb_vpc_id" {
+  type        = string
+  description = "The ID of ALB VPC to create ALB resources in. Defaults to the ID of ecs_vpc_id if none specified."
+  default     = ""
+}
+
 variable "alb_subnets" {
   type        = set(string)
   description = "Subnets in which to run the ALB."
+}
+
+variable "alb_drop_invalid_header_fields" {
+  type        = bool
+  description = "Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens."
+  default     = true
 }
 
 variable "alb_ingress_port" {

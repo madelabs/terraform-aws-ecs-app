@@ -9,6 +9,7 @@
 ## Checklist - These are **not** mandatory
 
 - [ ] I have updated the README.md if there are new procedures or changes.
+- [ ] I have updated CHANGELOG.md with new changes. 
 - [ ] I have deployed this change in another project successfully.
 
 ## Optional: Additional Notes
