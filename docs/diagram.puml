@@ -1,12 +1,5 @@
 @startuml terraform-aws-ecs-app
 
-' !define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v15.0/dist
-' !include AWSPuml/AWSSimplified.puml
-' !include AWSPuml/AWSCommon.puml
-' !include AWSPuml/DeveloperTools/all.puml
-
-
-
 !define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v15.0/dist
 !include AWSPuml/AWSCommon.puml
 !include AWSPuml/AWSSimplified.puml
@@ -24,9 +17,6 @@
 !include AWSPuml/Containers/all.puml
 !include AWSPuml/ManagementGovernance/all.puml
 !include AWSPuml/SecurityIdentityCompliance/all.puml
-
-' hide stereotype
-' skinparam linetype ortho
 
 AWSCloudGroup(cloud)  {
   VPCGroup(vpc, "VPC")  {
@@ -69,14 +59,7 @@ AWSCloudGroup(cloud)  {
     ecs_service1 --> ecs_task1
     target_group --> ecs_service2
     ecs_service2 --> ecs_task2
-
-
   }
 }
 
 @enduml
-
-
-' ElasticContainerServiceService
-' ElasticContainerServiceTask
-' Fargate

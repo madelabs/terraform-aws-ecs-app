@@ -1,7 +1,5 @@
 # terraform-aws-ecs-app
 
-A Terraform module for managing a multi-AZ ECS application.
-
 <!-- BEGIN MadeLabs Header -->
 ![MadeLabs is for hire!](https://d2xqy67kmqxrk1.cloudfront.net/horizontal_logo_white.png)
 MadeLabs is proud to support the open source community with these blueprints for provisioning infrastructure to help software builders get started quickly and with confidence. 
@@ -9,6 +7,10 @@ MadeLabs is proud to support the open source community with these blueprints for
 We're also for hire: [https://www.madelabs.io](https://www.madelabs.io)
 
 <!-- END MadeLabs Header -->
+
+A Terraform module for managing a multi-AZ ECS application.
+
+![PlantUML model](http://cdn-0.plantuml.com/plantuml/png/BSZR3S8m30NGLM20nF3BDhUnqqRA8_93NHyXyNdEiytIWoMqFoxtRHyYnPtFvbSSOQ9bJPVfkQn10omTXv6BAkhIaN1Rac89UrCLUAYGrz-yNmdCYHjEnI1UnUYFl6FqBm00)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
