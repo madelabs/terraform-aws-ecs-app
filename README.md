@@ -12,9 +12,8 @@ We're also for hire: [https://www.madelabs.io](https://www.madelabs.io)
 
 A Terraform module for managing a multi-AZ ECS application.
 
-<!-- ![PlantUML model](http://cdn-0.plantuml.com/plantuml/png/BOsvhSCm40NpNyLt0TJQgIEryiHTIGHu47j0xTi270rcabdDeHwj_ZrAppLOGkl_wJxjJQIubgFu6LkOQ1xTfVkIHwC6behDo4KL-z2MS5cIR0bpqYxmK27Vx_9w9Z0dBZWKZNXaevyiytwlqldB3m00) -->
+![PlantUML model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/madelabs/terraform-aws-ecs-app/main/docs/diagram.puml)
 
-![PlantUML model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/madelabs/terraform-aws-ecs-app/feature/tfecs-10-add-diagram/docs/diagram.puml)
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
