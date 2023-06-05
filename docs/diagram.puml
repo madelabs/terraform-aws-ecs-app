@@ -25,7 +25,7 @@ AWSCloudGroup(cloud)  {
     CloudWatchLogs(log_group, "CloudWatch", "") #LightGreen
     IdentityandAccessManagement(iam_resources, "IAM Roles and Policies", "") #LightGreen
 
-    rectangle target_group as "Target Group" #LightGreen
+    rectangle target_group as "ALB Target Group" #LightGreen
     rectangle security_group_alb as "ALB Security Group" #LightGreen
     rectangle security_group_tasks as "ECS Task Security Group" #LightGreen
     rectangle listener as "ALB Listener" #LightGreen

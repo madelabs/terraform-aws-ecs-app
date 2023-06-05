@@ -8,6 +8,8 @@ We're also for hire: [https://www.madelabs.io](https://www.madelabs.io)
 
 <!-- END MadeLabs Header -->
 
+---
+
 A Terraform module for managing a multi-AZ ECS application.
 
 ![PlantUML model](http://cdn-0.plantuml.com/plantuml/png/BSZR3S8m30NGLM20nF3BDhUnqqRA8_93NHyXyNdEiytIWoMqFoxtRHyYnPtFvbSSOQ9bJPVfkQn10omTXv6BAkhIaN1Rac89UrCLUAYGrz-yNmdCYHjEnI1UnUYFl6FqBm00)
