@@ -10,6 +10,14 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Remove creation of cluster in this module. Add variable for input for cluster ARN. 
+- Remove the unnecessary templates folder.
+- Add conditional creation of permissions boundary for roles, default to no permissions boundary. 
+- Add SSM Docker Exec support to ECS task. Defaults to false. 
+- Add variable for Fargate Platform Version. 
+- Add ability to launch the ECS resources and ALB resources in separate VPCs. 
+- Add Github Actions for generating README.md and checks for formatting and validation.
+- Add ability to turn on stickiness on the load balancer target group.
 - ALB target group naming shortened to decrease chance of hitting character limit.
 
 ## [0.0.2] - 2023-04-24

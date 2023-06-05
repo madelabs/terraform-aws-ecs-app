@@ -1,15 +1,20 @@
+locals {
+  actual_alb_vpc_id = var.alb_vpc_id != "" ? var.alb_vpc_id : var.ecs_vpc_id
+}
+
 resource "aws_alb" "alb" {
-  name            = "${var.project_name}-${var.environment}-alb"
-  internal        = var.alb_internal
-  subnets         = var.alb_subnets
-  security_groups = [aws_security_group.alb.id]
+  name                       = "${var.project_name}-${var.environment}-alb"
+  internal                   = var.alb_internal
+  subnets                    = var.alb_subnets
+  drop_invalid_header_fields = var.alb_drop_invalid_header_fields
+  security_groups            = [aws_security_group.alb.id]
 }
 
 resource "aws_alb_target_group" "target_group" {
   name        = "${var.project_name}-${var.environment}"
   port        = var.host_port
   protocol    = var.host_protocol
-  vpc_id      = var.vpc_id
+  vpc_id      = local.actual_alb_vpc_id
   target_type = var.alb_target_group_target_type
 
   health_check {
@@ -20,6 +25,15 @@ resource "aws_alb_target_group" "target_group" {
     timeout             = var.alb_target_group_health_check_timeout
     path                = var.health_check_path
     unhealthy_threshold = var.alb_target_group_health_check_unhealthy_threshold
+  }
+
+  dynamic "stickiness" {
+    for_each = var.alb_stickiness_enabled[*]
+
+    content {
+      type    = "lb_cookie"
+      enabled = var.alb_stickiness_enabled
+    }
   }
 }
 
