@@ -13,6 +13,13 @@ A Terraform module for managing a multi-AZ ECS application.
 
 ![PlantUML model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/madelabs/terraform-aws-ecs-app/main/docs/diagram.puml)
 
+## Requirements
+
+- VPC with subnets
+- Existing ECS cluster
+- URI to a container hosted in an accessible registry
+- ACM certificate for the application load balancer
+
 <!-- BEGIN_TF_DOCS -->
 ## Providers
 
