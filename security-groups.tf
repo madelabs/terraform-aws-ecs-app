@@ -29,7 +29,8 @@ resource "aws_security_group" "ecs_tasks" {
     protocol        = "tcp"
     from_port       = var.host_port
     to_port         = var.host_port
-    security_groups = var.alb_vpc_id == "" ? [aws_security_group.alb.id] : values(data.aws_subnet.alb_subnets).*.cidr_block
+    security_groups = var.alb_vpc_id == "" ? [aws_security_group.alb.id] : null
+    cidr_blocks     = var.alb_vpc_id != "" ? values(data.aws_subnet.alb_subnets).*.cidr_block : null
   }
 
   egress {
