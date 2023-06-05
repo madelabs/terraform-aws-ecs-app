@@ -11,7 +11,6 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Remove creation of cluster in this module. Add variable for input for cluster ARN. 
-- Remove Security Group ID output. 
 - Remove the unnecessary templates folder.
 - Add conditional creation of permissions boundary for roles, default to no permissions boundary. 
 - Add SSM Docker Exec support to ECS task. Defaults to false. 
