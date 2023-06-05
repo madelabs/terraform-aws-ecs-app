@@ -36,8 +36,10 @@ AWSCloudGroup(cloud)  {
         ElasticLoadBalancingApplicationLoadBalancer(alb1, "Application Load Balancer", "") #LightGreen
       }
       GenericGroup(subnet_b, "\tSubnet B\t")  {
-        ElasticContainerServiceService(ecs_service1, "ECS Service", "") #LightGreen
-        ElasticContainerServiceTask(ecs_task1, "ECS Task", "") #LightGreen
+        GenericGroup(ecs_cluster_in_b, "\tECS Cluster") {
+          ElasticContainerServiceService(ecs_service1, "ECS Service", "") #LightGreen
+          ElasticContainerServiceTask(ecs_task1, "ECS Task", "") #LightGreen
+        }
       }
     }
 
@@ -46,8 +48,10 @@ AWSCloudGroup(cloud)  {
         ElasticLoadBalancingApplicationLoadBalancer(alb2, "Application Load Balancer", "") #LightGreen
       }
       GenericGroup(subnet_d, "\tSubnet D\t")  {
-        ElasticContainerServiceService(ecs_service2, "ECS Service", "") #LightGreen
-        ElasticContainerServiceTask(ecs_task2, "ECS Task", "") #LightGreen
+        GenericGroup(ecs_cluster_in_d, "\tECS Cluster") {
+          ElasticContainerServiceService(ecs_service2, "ECS Service", "") #LightGreen
+          ElasticContainerServiceTask(ecs_task2, "ECS Task", "") #LightGreen
+        }
       }
     }
 
