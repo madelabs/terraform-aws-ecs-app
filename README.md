@@ -110,4 +110,5 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_alb_hostname"></a> [alb\_hostname](#output\_alb\_hostname) | n/a |
+| <a name="output_ecs_tasks_security_group_id"></a> [ecs\_tasks\_security\_group\_id](#output\_ecs\_tasks\_security\_group\_id) | n/a |
 <!-- END_TF_DOCS -->
