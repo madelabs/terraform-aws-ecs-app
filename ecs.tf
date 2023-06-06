@@ -1,14 +1,12 @@
-resource "aws_ecs_cluster" "cluster" {
-  name = "${var.project_name}-cluster"
-}
-
 resource "aws_ecs_service" "service" {
   name                              = "${var.project_name}-${var.environment}-service"
-  cluster                           = aws_ecs_cluster.cluster.id
+  cluster                           = var.ecs_cluster_arn
   task_definition                   = aws_ecs_task_definition.task.arn
   health_check_grace_period_seconds = var.ecs_svc_health_check_grace_period_seconds
   desired_count                     = var.ecs_svc_container_desired_count
   launch_type                       = var.ecs_svc_launch_type
+  platform_version                  = var.ecs_svc_fargate_platform_version
+  enable_execute_command            = var.ecs_svc_enable_ssm
 
   network_configuration {
     assign_public_ip = var.public_ip

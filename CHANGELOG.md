@@ -6,6 +6,23 @@ All notable changes to this project will be documented in this file.
 
 - Add capacity provider support to support spot instances for cost savings
 
+## [0.0.3] - 2023-06-06
+
+### Changed
+
+- Remove creation of cluster in this module. Add variable for input for cluster ARN.
+- Remove the unnecessary templates folder.
+- ALB target group naming shortened to decrease chance of hitting character limit.
+
+### Added
+
+- Add conditional creation of permissions boundary for roles, default to no permissions boundary.
+- Add SSM Docker Exec support to ECS task. Defaults to false.
+- Add variable for Fargate Platform Version.
+- Add ability to launch the ECS resources and ALB resources in separate VPCs.
+- Add Github Actions for generating README.md and checks for formatting and validation.
+- Add ability to turn on stickiness on the load balancer target group.
+
 ## [0.0.2] - 2023-04-24
 
 ### Fixed
