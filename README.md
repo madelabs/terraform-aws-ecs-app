@@ -1,7 +1,5 @@
 # terraform-aws-ecs-app
 
-A Terraform module for managing a multi-AZ ECS application.
-
 <!-- BEGIN MadeLabs Header -->
 ![MadeLabs is for hire!](https://d2xqy67kmqxrk1.cloudfront.net/horizontal_logo_white.png)
 MadeLabs is proud to support the open source community with these blueprints for provisioning infrastructure to help software builders get started quickly and with confidence. 
@@ -9,10 +7,16 @@ MadeLabs is proud to support the open source community with these blueprints for
 We're also for hire: [https://www.madelabs.io](https://www.madelabs.io)
 
 <!-- END MadeLabs Header -->
+---
+
+A Terraform module for managing a multi-AZ ECS application.
+
+![PlantUML model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/madelabs/terraform-aws-ecs-app/main/docs/diagram.puml)
 
 ## Requirements
 
 - VPC with subnets
+- Existing ECS cluster
 - URI to a container hosted in an accessible registry
 - ACM certificate for the application load balancer
 
