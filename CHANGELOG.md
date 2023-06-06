@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Add capacity provider support to support spot instances for cost savings
 
-## [0.0.3] - DATE TBD
+## [0.0.3] - 2023-06-06
 
 ### Changed
 
