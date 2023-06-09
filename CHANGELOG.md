@@ -2,9 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.0.4] - 2023-06-08
 
-- Add capacity provider support to support spot instances for cost savings
+### Added
+
+- Add ALB timeout variable.
+- Add container environment variable to task definition. 
 
 ## [0.0.3] - 2023-06-06
 

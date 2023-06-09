@@ -8,6 +8,7 @@ resource "aws_alb" "alb" {
   subnets                    = var.alb_subnets
   drop_invalid_header_fields = var.alb_drop_invalid_header_fields
   security_groups            = [aws_security_group.alb.id]
+  idle_timeout               = var.alb_idle_timeout
 }
 
 resource "aws_alb_target_group" "target_group" {
