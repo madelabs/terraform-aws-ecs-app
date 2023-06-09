@@ -119,6 +119,14 @@ variable "container_task_definition_protocol" {
   default     = "tcp"
 }
 
+variable "container_environment_variables" {
+  type = list(object({
+    name  = string,
+    value = string
+  }))
+  description = "The environment variables to pass to a container. This parameter maps to Env in the Create a container section of the Docker Remote API and the --env option to docker run."
+  default     = []
+}
 
 variable "container_health_check_retries" {
   type        = number
@@ -268,4 +276,10 @@ variable "alb_stickiness_enabled" {
   type        = bool
   description = "Whether or not stickiness is enabled on the ALB."
   default     = true
+}
+
+variable "alb_idle_timeout" {
+  type        = number
+  description = "The time in seconds that the connection is allowed to be idle."
+  default     = 60
 }
