@@ -26,7 +26,7 @@ module "ecs_app" {
   host_protocol       = "HTTP"
   container_image_uri = "1234567890123.dkr.ecr.us-east-1.amazonaws.com/myimage:latest"
 
-  health_check_path              = "/swagger/index.html"
+  health_check_path              = "/health"
   container_health_check_command = ["CMD-SHELL", "curl -f http://localhost:80/health|| exit 1"]
   container_environment_variables = [
     {
