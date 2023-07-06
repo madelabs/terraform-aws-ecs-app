@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.5] - 2023-XX-XX
+
+### Added
+
+- Required minimum version of Terraform to `1.3.3`
+- Required minimum version of `hashicorp/aws` provider to `5.0.0`
+
 ## [0.0.4] - 2023-06-08
 
 ### Added
