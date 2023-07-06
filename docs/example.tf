@@ -1,6 +1,6 @@
 module "ecs_app" {
   source  = "madelabs/ecs-app/aws"
-  version = "0.0.4"
+  version = "0.0.5"
 
   project_name = "my-project"
   environment  = "prod"
