@@ -1,12 +1,32 @@
 resource "aws_ecs_service" "service" {
-  name                              = "${var.project_name}-${var.environment}-service"
-  cluster                           = var.ecs_cluster_arn
-  task_definition                   = aws_ecs_task_definition.task.arn
-  health_check_grace_period_seconds = var.ecs_svc_health_check_grace_period_seconds
-  desired_count                     = var.ecs_svc_container_desired_count
-  launch_type                       = var.ecs_svc_launch_type
-  platform_version                  = var.ecs_svc_fargate_platform_version
-  enable_execute_command            = var.ecs_svc_enable_ssm
+  name                               = "${var.project_name}-${var.environment}-service"
+  cluster                            = var.ecs_cluster_arn
+  task_definition                    = aws_ecs_task_definition.task.arn
+  health_check_grace_period_seconds  = var.ecs_svc_health_check_grace_period_seconds
+  desired_count                      = var.ecs_svc_container_desired_count
+  launch_type                        = length(var.ecs_svc_capacity_provider_strategy) > 0 ? null : var.ecs_svc_launch_type
+  platform_version                   = var.ecs_svc_fargate_platform_version
+  enable_execute_command             = var.ecs_svc_enable_ssm
+  deployment_maximum_percent         = var.ecs_svc_deployment_maximum_percent
+  deployment_minimum_healthy_percent = var.ecs_svc_deployment_minimum_percent
+  force_new_deployment               = length(var.ecs_svc_capacity_provider_strategy) > 0 ? true : var.ecs_svc_force_new_deployment
+
+  dynamic "deployment_circuit_breaker" {
+    for_each = var.ecs_svc_enable_deployment_circuit_breaker ? [1] : []
+    content {
+      enable   = true
+      rollback = true
+    }
+  }
+
+  dynamic "capacity_provider_strategy" {
+    for_each = var.ecs_svc_capacity_provider_strategy
+    content {
+      capacity_provider = capacity_provider_strategy.value.capacity_provider
+      base              = capacity_provider_strategy.value.base
+      weight            = capacity_provider_strategy.value.weight
+    }
+  }
 
   network_configuration {
     assign_public_ip = var.public_ip
