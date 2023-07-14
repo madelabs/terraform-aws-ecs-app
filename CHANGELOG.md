@@ -2,12 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.5] - 2023-XX-XX
+## [0.0.5] - 2023-7-14
 
 ### Added
 
-- Required minimum version of Terraform to `1.3.3`
+- Required minimum version of Terraform to `1.5.2`
 - Required minimum version of `hashicorp/aws` provider to `5.0.0`
+- Added capacity provider strategy configuration to ECS service.
+- Added cloudwatch event alerts for ECS service deployments. 
+- Added deployment circuit breaker configuration to ECS service.
 
 ## [0.0.4] - 2023-06-08
 
