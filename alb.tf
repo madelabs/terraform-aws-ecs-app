@@ -12,11 +12,13 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_alb_target_group" "target_group" {
-  name        = "${var.project_name}-${var.environment}"
-  port        = var.host_port
-  protocol    = var.host_protocol
-  vpc_id      = local.actual_alb_vpc_id
-  target_type = var.alb_target_group_target_type
+  name                 = "${var.project_name}-${var.environment}"
+  port                 = var.host_port
+  protocol             = var.host_protocol
+  vpc_id               = local.actual_alb_vpc_id
+  target_type          = var.alb_target_group_target_type
+  deregistration_delay = var.alb_target_group_deregistration_delay
+
 
   health_check {
     healthy_threshold   = var.alb_target_group_health_check_healthy_threshold
