@@ -106,7 +106,7 @@ variable "ecs_svc_enable_deployment_circuit_breaker" {
 variable "ecs_svc_health_check_grace_period_seconds" {
   type        = number
   description = "Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers."
-  default     = 0
+  default     = 5
 }
 
 variable "ecs_svc_enable_ssm" {
@@ -182,7 +182,7 @@ variable "container_environment_variables" {
 variable "container_health_check_retries" {
   type        = number
   description = "The number of times to retry a failed health check before the container is considered unhealthy. You may specify between 1 and 10 retries."
-  default     = 3
+  default     = 2
 }
 
 variable "container_health_check_command" {
@@ -192,20 +192,20 @@ variable "container_health_check_command" {
 
 variable "container_health_check_timeout" {
   type        = number
-  description = "The period of time (in seconds) to wait for a health check to succeed before it's considered a failure. You may specify between 2 and 60 seconds. The default value is 5 seconds."
-  default     = 5
+  description = "The period of time (in seconds) to wait for a health check to succeed before it's considered a failure. You may specify between 2 and 60 seconds. The default value is 3 seconds."
+  default     = 3
 }
 
 variable "container_health_check_interval" {
   type        = number
-  description = "The period of time (in seconds) between each health check. You may specify between 5 and 300 seconds. The default value is 10 seconds."
-  default     = 10
+  description = "The period of time (in seconds) between each health check. You may specify between 5 and 300 seconds. The default value is 5 seconds."
+  default     = 5
 }
 
 variable "container_health_check_start_period" {
   type        = number
-  description = "The optional grace period to provide containers time to bootstrap in before failed health checks count towards the maximum number of retries. You can specify between 0 and 300 seconds. By default, startPeriod is disabled."
-  default     = 30
+  description = "The optional grace period to provide containers time to bootstrap in before failed health checks count towards the maximum number of retries. You can specify between 0 and 300 seconds."
+  default     = 10
 }
 
 ### IAM ###
@@ -319,14 +319,14 @@ variable "alb_listener_certificate_arn" {
 
 variable "alb_target_group_health_check_healthy_threshold" {
   type        = number
-  description = "Number of consecutive health check successes required before considering a target healthy. The range is 2-10. Defaults to 3."
-  default     = 3
+  description = "Number of consecutive health check successes required before considering a target healthy. The range is 2-10. Defaults to 2."
+  default     = 2
 }
 
 variable "alb_target_group_health_check_interval" {
   type        = number
-  description = "Approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300. For lambda target groups, it needs to be greater than the timeout of the underlying lambda. Defaults to 30."
-  default     = 30
+  description = "Approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300. For lambda target groups, it needs to be greater than the timeout of the underlying lambda. Defaults to 10."
+  default     = 10
 }
 
 variable "alb_target_group_health_check_matcher" {
@@ -338,13 +338,13 @@ variable "alb_target_group_health_check_matcher" {
 variable "alb_target_group_health_check_timeout" {
   type        = number
   description = "Amount of time, in seconds, during which no response from a target means a failed health check. The range is 2–120 seconds. "
-  default     = 15
+  default     = 5
 }
 
 variable "alb_target_group_health_check_unhealthy_threshold" {
   type        = number
-  description = "Number of consecutive health check failures required before considering a target unhealthy. The range is 2-10. Defaults to 3."
-  default     = 3
+  description = "Number of consecutive health check failures required before considering a target unhealthy. The range is 2-10. Defaults to 2."
+  default     = 2
 }
 
 variable "alb_stickiness_enabled" {
