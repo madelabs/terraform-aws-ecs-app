@@ -8,6 +8,7 @@ We're also for hire: [https://www.madelabs.io](https://www.madelabs.io)
 
 <!-- END MadeLabs Header -->
 
+
 ---
 
 A Terraform module for managing a multi-AZ ECS application.
@@ -26,7 +27,7 @@ A Terraform module for managing a multi-AZ ECS application.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.8.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.9.0 |
 
 ## Modules
 
