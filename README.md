@@ -39,6 +39,7 @@ No modules.
 |------|------|
 | [aws_alb.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/alb) | resource |
 | [aws_alb_listener.listener](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/alb_listener) | resource |
+| [aws_alb_listener.listener_for_redirect](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/alb_listener) | resource |
 | [aws_alb_target_group.target_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/alb_target_group) | resource |
 | [aws_cloudwatch_event_rule.ecs_deployment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
 | [aws_cloudwatch_event_target.ecs_deployment_events_sns](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
@@ -76,6 +77,7 @@ No modules.
 | <a name="input_alb_listener_action_type"></a> [alb\_listener\_action\_type](#input\_alb\_listener\_action\_type) | Type of routing action. Valid values are [forward, redirect, fixed-response, authenticate-cognito and authenticate-oidc] | `string` | `"forward"` | no |
 | <a name="input_alb_listener_certificate_arn"></a> [alb\_listener\_certificate\_arn](#input\_alb\_listener\_certificate\_arn) | ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. | `string` | n/a | yes |
 | <a name="input_alb_listener_ssl_policy"></a> [alb\_listener\_ssl\_policy](#input\_alb\_listener\_ssl\_policy) | Name of the SSL Policy for the listener. | `string` | `"ELBSecurityPolicy-TLS13-1-2-2021-06"` | no |
+| <a name="input_alb_redirect_port"></a> [alb\_redirect\_port](#input\_alb\_redirect\_port) | Port for which the ALB will forward to the alb\_ingress\_port.  e.g. HTTP:80 to HTTP:443 redirection. | `number` | `80` | no |
 | <a name="input_alb_stickiness_enabled"></a> [alb\_stickiness\_enabled](#input\_alb\_stickiness\_enabled) | Whether or not stickiness is enabled on the ALB. | `bool` | `true` | no |
 | <a name="input_alb_subnets"></a> [alb\_subnets](#input\_alb\_subnets) | Subnets in which to run the ALB. | `set(string)` | n/a | yes |
 | <a name="input_alb_target_group_deregistration_delay"></a> [alb\_target\_group\_deregistration\_delay](#input\_alb\_target\_group\_deregistration\_delay) | Amount of time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds. | `number` | `0` | no |
