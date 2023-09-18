@@ -11,6 +11,14 @@ resource "aws_security_group" "alb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "Allow traffic from the internet on ${var.alb_redirect_port}"
+    protocol    = "tcp"
+    from_port   = var.alb_redirect_port
+    to_port     = var.alb_redirect_port
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     protocol    = "-1"
     from_port   = 0

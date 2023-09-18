@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.8] - 2023-09-18
+
+### Fixed
+
+- Added ingress block for ALB redirect port on the ALB security group.
+
 ## [0.0.7] - 2023-09-15
 
 ### Added
