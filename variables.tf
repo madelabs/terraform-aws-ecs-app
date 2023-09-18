@@ -288,6 +288,12 @@ variable "alb_ingress_port" {
   default     = 443
 }
 
+variable "alb_redirect_port" {
+  type        = number
+  description = "Port for which the ALB will forward to the alb_ingress_port.  e.g. HTTP:80 to HTTP:443 redirection."
+  default     = 80
+}
+
 variable "alb_target_group_target_type" {
   type        = string
   description = "Type of target that you must specify when registering targets with this target group. [instance, ip, lambda, alb]"
