@@ -52,3 +52,19 @@ resource "aws_alb_listener" "listener" {
     type             = var.alb_listener_action_type
   }
 }
+
+resource "aws_alb_listener" "listener_for_redirect" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = var.alb_redirect_port
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = var.alb_ingress_port
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
