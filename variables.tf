@@ -364,3 +364,12 @@ variable "alb_idle_timeout" {
   description = "The time in seconds that the connection is allowed to be idle."
   default     = 60
 }
+
+variable "container_secrets" {
+  type = list(object({
+    name      = string,
+    valueFrom = string
+  }))
+  description = "The secrets from AWS Secrets Manager to pass to a container."
+  default     = []
+}

@@ -67,6 +67,7 @@ resource "aws_ecs_task_definition" "task" {
       }
 
       environment = var.container_environment_variables
+      secrets     = var.container_secrets
 
       portMappings = [
         {

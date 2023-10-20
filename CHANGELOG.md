@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.9] - 2023-10-19
+
+### Added
+
+- Added the ability to define secrets in the task definition.
+
 ## [0.0.8] - 2023-09-18
 
 ### Fixed
