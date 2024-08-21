@@ -1,16 +1,16 @@
 module "ecs_app" {
   source  = "madelabs/ecs-app/aws"
-  version = "0.0.5"
+  version = "0.0.9"
 
   project_name = "my-project"
   environment  = "prod"
   aws_region   = "us-east-1"
 
   alb_listener_certificate_arn = "arn:aws:acm:us-east-1:1234567890123:certificate/123abcde-f345-6789-0123-9abcdefgh01"
-
-  alb_internal = false
-  alb_subnets  = ["subnet-2234567890123", "subnet-2234567890124"]
-  public_ip    = true
+  alb_internal                 = false
+  alb_subnets                  = ["subnet-2234567890123", "subnet-2234567890124"]
+  health_check_path            = "/health"
+  public_ip                    = true
 
   ecs_vpc_id                       = "vpc-1234567890123"
   ecs_cluster_arn                  = "arn:aws:ecs:us-east-1:1234567890123:cluster/my-cluster"
@@ -21,17 +21,24 @@ module "ecs_app" {
   ecs_svc_enable_ssm               = true
   ecs_svc_fargate_platform_version = "LATEST"
 
-  host_port           = 80
-  container_port      = 80
-  host_protocol       = "HTTP"
-  container_image_uri = "1234567890123.dkr.ecr.us-east-1.amazonaws.com/myimage:latest"
+  host_port     = 80
+  host_protocol = "HTTP"
 
-  health_check_path              = "/health"
   container_health_check_command = ["CMD-SHELL", "curl -f http://localhost:80/health|| exit 1"]
+  container_image_uri            = "1234567890123.dkr.ecr.us-east-1.amazonaws.com/myimage:latest"
+  container_port                 = 80
+
   container_environment_variables = [
     {
       "name"  = "ASPNETCORE_ENVIRONMENT",
       "value" = "Development"
+    }
+  ]
+
+  container_secrets = [
+    {
+      "name"      = "MySecret",
+      "valueFrom" = "arn:aws:secretsmanager:us-east-1:1234567890123:secret:my-secret-123456"
     }
   ]
 
@@ -46,7 +53,9 @@ module "ecs_app" {
     "logs:CreateLogStream",
     "logs:PutLogEvents",
     "logs:CreateLogGroup",
+    "logs:DescribeLogStreams",
+    "logs:DescribeLogGroups", # Required for ECS SSM docker exec
     "secretsmanager:*",
-    "logs:DescribeLogStreams"
+    "kms:decrypt" # Required for ECS SSM docker exec
   ]
 }
