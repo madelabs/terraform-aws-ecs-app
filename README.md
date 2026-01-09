@@ -131,6 +131,8 @@ No modules.
 | <a name="input_sns_topic_subscription_protocol"></a> [sns\_topic\_subscription\_protocol](#input\_sns\_topic\_subscription\_protocol) | The protocol you want to use. Supported protocols include: [email, email-json, http, https, sqs, sms, lambda] | `string` | `"https"` | no |
 | <a name="input_task_policy_actions"></a> [task\_policy\_actions](#input\_task\_policy\_actions) | List of services and their permissions to apply to the policy. | `set(string)` | n/a | yes |
 | <a name="input_task_policy_resources"></a> [task\_policy\_resources](#input\_task\_policy\_resources) | Resources that task\_policy\_actions should be applied to. | `set(string)` | <pre>[<br>  "*"<br>]</pre> | no |
+| <a name="alb_ingress_cidr_blocks"></a> [alb\_ingress\_cidr\_blocks](#alb\_ingress\_cidr\_blocks) | Allowed CIDR blocks for ALB ingress (default ["0.0.0.0/0"]) | `list(string)` | `["0.0.0.0/0"]` | no |
+| <a name="alb_egress_cidr_blocks"></a> [alb\_egress\_cidr\_blocks](#alb\_egress\_cidr\_blocks) | Allowed CIDR blocks for ALB egress (default ["0.0.0.0/0"]) | `list(string)` | `["0.0.0.0/0"]` | no |
 
 ## Outputs
 
