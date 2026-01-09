@@ -71,7 +71,9 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alb_drop_invalid_header_fields"></a> [alb\_drop\_invalid\_header\_fields](#input\_alb\_drop\_invalid\_header\_fields) | Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. | `bool` | `true` | no |
+| <a name="input_alb_egress_cidr_blocks"></a> [alb\_egress\_cidr\_blocks](#input\_alb\_egress\_cidr\_blocks) | Allowed CIDR blocks for ALB egress | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_alb_idle_timeout"></a> [alb\_idle\_timeout](#input\_alb\_idle\_timeout) | The time in seconds that the connection is allowed to be idle. | `number` | `60` | no |
+| <a name="input_alb_ingress_cidr_blocks"></a> [alb\_ingress\_cidr\_blocks](#input\_alb\_ingress\_cidr\_blocks) | Allowed CIDR blocks for ALB ingress | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_alb_ingress_port"></a> [alb\_ingress\_port](#input\_alb\_ingress\_port) | Port for which the ALB listens on to accept traffic and route to the target group. | `number` | `443` | no |
 | <a name="input_alb_internal"></a> [alb\_internal](#input\_alb\_internal) | Whether or not the loab balancer is internal. | `bool` | `false` | no |
 | <a name="input_alb_listener_action_type"></a> [alb\_listener\_action\_type](#input\_alb\_listener\_action\_type) | Type of routing action. Valid values are [forward, redirect, fixed-response, authenticate-cognito and authenticate-oidc] | `string` | `"forward"` | no |
@@ -131,8 +133,6 @@ No modules.
 | <a name="input_sns_topic_subscription_protocol"></a> [sns\_topic\_subscription\_protocol](#input\_sns\_topic\_subscription\_protocol) | The protocol you want to use. Supported protocols include: [email, email-json, http, https, sqs, sms, lambda] | `string` | `"https"` | no |
 | <a name="input_task_policy_actions"></a> [task\_policy\_actions](#input\_task\_policy\_actions) | List of services and their permissions to apply to the policy. | `set(string)` | n/a | yes |
 | <a name="input_task_policy_resources"></a> [task\_policy\_resources](#input\_task\_policy\_resources) | Resources that task\_policy\_actions should be applied to. | `set(string)` | <pre>[<br>  "*"<br>]</pre> | no |
-| <a name="alb_ingress_cidr_blocks"></a> [alb\_ingress\_cidr\_blocks](#alb\_ingress\_cidr\_blocks) | Allowed CIDR blocks for ALB ingress (default ["0.0.0.0/0"]) | `list(string)` | `["0.0.0.0/0"]` | no |
-| <a name="alb_egress_cidr_blocks"></a> [alb\_egress\_cidr\_blocks](#alb\_egress\_cidr\_blocks) | Allowed CIDR blocks for ALB egress (default ["0.0.0.0/0"]) | `list(string)` | `["0.0.0.0/0"]` | no |
 
 ## Outputs
 
