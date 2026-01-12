@@ -4,26 +4,26 @@ resource "aws_security_group" "alb" {
   vpc_id      = local.actual_alb_vpc_id
 
   ingress {
-    description = "Allow traffic from the internet on ${var.alb_ingress_port}"
+    description = "Allow traffic on ${var.alb_ingress_port}"
     protocol    = "tcp"
     from_port   = var.alb_ingress_port
     to_port     = var.alb_ingress_port
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.alb_ingress_cidr_blocks
   }
 
   ingress {
-    description = "Allow traffic from the internet on ${var.alb_redirect_port}"
+    description = "Allow traffic on ${var.alb_redirect_port}"
     protocol    = "tcp"
     from_port   = var.alb_redirect_port
     to_port     = var.alb_redirect_port
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.alb_ingress_cidr_blocks
   }
 
   egress {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.alb_egress_cidr_blocks
   }
 }
 

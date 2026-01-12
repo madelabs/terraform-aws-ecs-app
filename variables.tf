@@ -373,3 +373,16 @@ variable "container_secrets" {
   description = "The secrets from AWS Secrets Manager to pass to a container."
   default     = []
 }
+
+### SECURITY GROUPS ###
+variable "alb_ingress_cidr_blocks" {
+  description = "Allowed CIDR blocks for ALB ingress"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "alb_egress_cidr_blocks" {
+  description = "Allowed CIDR blocks for ALB egress"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}

@@ -71,7 +71,9 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alb_drop_invalid_header_fields"></a> [alb\_drop\_invalid\_header\_fields](#input\_alb\_drop\_invalid\_header\_fields) | Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. | `bool` | `true` | no |
+| <a name="input_alb_egress_cidr_blocks"></a> [alb\_egress\_cidr\_blocks](#input\_alb\_egress\_cidr\_blocks) | Allowed CIDR blocks for ALB egress | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_alb_idle_timeout"></a> [alb\_idle\_timeout](#input\_alb\_idle\_timeout) | The time in seconds that the connection is allowed to be idle. | `number` | `60` | no |
+| <a name="input_alb_ingress_cidr_blocks"></a> [alb\_ingress\_cidr\_blocks](#input\_alb\_ingress\_cidr\_blocks) | Allowed CIDR blocks for ALB ingress | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_alb_ingress_port"></a> [alb\_ingress\_port](#input\_alb\_ingress\_port) | Port for which the ALB listens on to accept traffic and route to the target group. | `number` | `443` | no |
 | <a name="input_alb_internal"></a> [alb\_internal](#input\_alb\_internal) | Whether or not the loab balancer is internal. | `bool` | `false` | no |
 | <a name="input_alb_listener_action_type"></a> [alb\_listener\_action\_type](#input\_alb\_listener\_action\_type) | Type of routing action. Valid values are [forward, redirect, fixed-response, authenticate-cognito and authenticate-oidc] | `string` | `"forward"` | no |

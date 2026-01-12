@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.10] - 2026-01-09
+
+### Changed
+
+- Changed ALB ingress and egress CIDR blocks to use variables instead of set values
+- Variables default to old value (["0.0.0.0/0"])
+
 ## [0.0.9] - 2023-10-19
 
 ### Added
